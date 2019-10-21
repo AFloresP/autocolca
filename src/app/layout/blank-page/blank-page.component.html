@@ -1,0 +1,93 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{ modal_title }}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="restaurantName">Nombre del Restaurante</label>
+        <div class="input-group">
+          <input class="form-control" [(ngModel)]="th_restaurant.name" [ngModelOptions]="{standalone: true}">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="typesFood">Tipos de comida</label>
+        <div class="input-group">
+          <input class="form-control" [(ngModel)]="th_restaurant.typeFoods" [ngModelOptions]="{standalone: true}">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="restaurantAddress">Direccion</label>
+        <div class="input-group">
+          <input class="form-control" [(ngModel)]="th_restaurant.address" [ngModelOptions]="{standalone: true}">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')"><i class="fa fa-fw fa-ban"></i> Cancelar</button>
+    <button (click)="createRestaurant()" class="btn btn-dark"><i class="fa fa-fw fa-floppy-o"></i> Guardar</button>
+  </div>
+</ng-template>
+
+<ng-template #view let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">VISTA DETALLADA</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <b>ID: </b>{{ view_restaurant.id }}<br>
+    <b>NOMBRE: </b>{{ view_restaurant.name }}<br>
+    <b>COMIDAS: </b>{{ view_restaurant.typeFoods }}<br>
+    <b>DIRECCION: </b>{{ view_restaurant.address }}<br>
+  </div>
+  <div class="modal-footer">
+    
+  </div>
+</ng-template>
+
+<button class="btn btn btn-success" (click)="open(content)"> <i class="fa fa-fw fa-plus-square"></i>Nuevo</button>
+
+<hr>
+
+<div class="row">
+  <div class="col col-xl-12 col-lg-12">
+
+    <div class="card mb-3">
+      <div class="card-header">Lista de Restaurantes</div>
+      <table class="card-body table table-hover">
+        <thead>
+          <tr>
+            <th>NOMBRE</th>
+            <th>COMIDAS</th>
+            <th>DIRECCION</th>
+            <th>ACCIONES</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let restaurant of restaurants_ar">
+            <td>{{ restaurant.name }}</td>
+            <td>{{ restaurant.typeFoods }}</td>
+            <td>{{ restaurant.address }}</td>
+            <td>
+              <button (click)="viewRestaurant(restaurant,view)" class="btn btn-info btn-sm" style="margin-left: 5px;"> <i class="fa fa-fw fa-file-text-o"></i>
+              </button>
+              <button (click)="editRestaurant(restaurant,content)" class="btn btn-warning btn-sm"
+                style="margin-left: 5px;"> <i class="fa fa-fw fa-pencil-square-o"></i> </button>
+              <button (click)="deleteRestaurant(restaurant.id)" class="btn btn-danger btn-sm" style="margin-left: 5px;">
+                <i class="fa fa-fw fa-trash"></i> </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
