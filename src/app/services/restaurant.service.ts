@@ -13,7 +13,16 @@ export class RestaurantService {
     return this.db.collection('restaurants').snapshotChanges();
   }
 
-  createRestaurant(restaurant: Restaurant) {
+  createRestaurant(data) {
+    //console.log(data)
+    this.db.collection('restaurants').add(data);
+  }
+
+  updateRestaurant(r_id, data) {
+    this.db.doc('restaurants/' + r_id).update(data);
+  }
+
+  /*createRestaurant(restaurant: Restaurant) {
     return this.db.collection("restaurants").add(
       {
         name: restaurant.name,
@@ -26,8 +35,23 @@ export class RestaurantService {
       .catch(function (error) {
         console.error("Error adding document: ", error);
       });
-  }
+  }*/
 
+  /*createRestaurant(values) {
+    return this.db.collection("restaurants").add(
+      {
+        name: values.nombre,
+        typeFoods: values.comidas,
+        address: values.direccion
+      }
+    ).then(function (docRef) {
+        console.log("Document written with ID: ", docRef.id);
+      })
+      .catch(function (error) {
+        console.error("Error adding document: ", error);
+      });
+  }*/
+  /*
   updateRestaurant(restaurant: Restaurant) {
     this.db.doc('restaurants/' + restaurant.id).update(
       {
@@ -37,6 +61,16 @@ export class RestaurantService {
       }
     );
   }
+  
+ updateRestaurant(values) {
+  this.db.doc('restaurants/' + values.id).update(
+    {
+      name: values.nombre,
+      typeFoods: values.comidas,
+      address: values.direccion
+    }
+  );
+} */
 
   deleteRestaurant(restaurantId: string) {
     this.db.doc('restaurants/' + restaurantId).delete();

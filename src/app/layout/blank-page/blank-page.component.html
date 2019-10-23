@@ -2,36 +2,35 @@
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">{{ modal_title }}</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
+      <i class="fa fa-window-close" aria-hidden="true"></i>
     </button>
   </div>
   <div class="modal-body">
-    <form>
+    <form [formGroup]="restaurantForm" (ngSubmit)="saveRestaurant(restaurantForm.value)">
       <div class="form-group">
-        <label for="restaurantName">Nombre del Restaurante</label>
+        <label>Nombre del Restaurante:</label>
         <div class="input-group">
-          <input class="form-control" [(ngModel)]="th_restaurant.name" [ngModelOptions]="{standalone: true}">
+          <input class="form-control" formControlName="name" type="text" />
         </div>
       </div>
-
       <div class="form-group">
-        <label for="typesFood">Tipos de comida</label>
+        <label>Tipos de comida:</label>
         <div class="input-group">
-          <input class="form-control" [(ngModel)]="th_restaurant.typeFoods" [ngModelOptions]="{standalone: true}">
+          <input class="form-control" formControlName="typeFoods" type="text" />
         </div>
       </div>
-
       <div class="form-group">
-        <label for="restaurantAddress">Direccion</label>
+        <label>Direccion:</label>
         <div class="input-group">
-          <input class="form-control" [(ngModel)]="th_restaurant.address" [ngModelOptions]="{standalone: true}">
+          <input class="form-control" formControlName="address" type="text" />
         </div>
       </div>
+      <hr>
+      <!--<button type="button" class="btn btn-outline-dark" style="margin-left: 5px;"
+        (click)="modal.close('Save click')"><i class="fa fa-fw fa-ban"></i> Cancelar</button>-->
+      <button class="btn btn-lg btn-block btn-dark" [disabled]="restaurantForm.invalid" type="submit"><i
+          class="fa fa-fw fa-floppy-o"></i> Guardar</button>
     </form>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')"><i class="fa fa-fw fa-ban"></i> Cancelar</button>
-    <button (click)="createRestaurant()" class="btn btn-dark"><i class="fa fa-fw fa-floppy-o"></i> Guardar</button>
   </div>
 </ng-template>
 
@@ -39,17 +38,14 @@
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">VISTA DETALLADA</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
+        <i class="fa fa-window-close" aria-hidden="true"></i>
+      </button>
   </div>
   <div class="modal-body">
     <b>ID: </b>{{ view_restaurant.id }}<br>
     <b>NOMBRE: </b>{{ view_restaurant.name }}<br>
     <b>COMIDAS: </b>{{ view_restaurant.typeFoods }}<br>
     <b>DIRECCION: </b>{{ view_restaurant.address }}<br>
-  </div>
-  <div class="modal-footer">
-    
   </div>
 </ng-template>
 
@@ -77,7 +73,8 @@
             <td>{{ restaurant.typeFoods }}</td>
             <td>{{ restaurant.address }}</td>
             <td>
-              <button (click)="viewRestaurant(restaurant,view)" class="btn btn-info btn-sm" style="margin-left: 5px;"> <i class="fa fa-fw fa-file-text-o"></i>
+              <button (click)="viewRestaurant(restaurant,view)" class="btn btn-info btn-sm" style="margin-left: 5px;">
+                <i class="fa fa-fw fa-file-text-o"></i>
               </button>
               <button (click)="editRestaurant(restaurant,content)" class="btn btn-warning btn-sm"
                 style="margin-left: 5px;"> <i class="fa fa-fw fa-pencil-square-o"></i> </button>

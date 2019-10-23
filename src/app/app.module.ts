@@ -16,12 +16,15 @@ import { firebaseConfig } from "../environments/environment";
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
+import { ToastrModule } from 'ngx-toastr';
+
 @NgModule({
     imports: [
         CommonModule,
         BrowserModule,
         FormsModule,
         BrowserAnimationsModule,
+        ToastrModule.forRoot(),
         HttpClientModule,
         LanguageTranslationModule,
         AppRoutingModule,
