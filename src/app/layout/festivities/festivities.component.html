@@ -6,29 +6,29 @@
     </button>
   </div>
   <div class="modal-body">
-    <form [formGroup]="hotelForm" (ngSubmit)="saveHotel(hotelForm.value)">
+    <form [formGroup]="festivityForm" (ngSubmit)="saveFestivity(festivityForm.value)">
       <div class="form-group">
-        <label>Nombre del Hotel:</label>
+        <label>Nombre de la Festividad:</label>
         <div class="input-group">
           <input class="form-control" formControlName="name" type="text" />
         </div>
       </div>
       <div class="form-group">
-        <label>Tipos de servicios:</label>
+        <label>Descripcion:</label>
         <div class="input-group">
-          <input class="form-control" formControlName="services" type="text" />
+          <input class="form-control" formControlName="description" type="text" />
         </div>
       </div>
       <div class="form-group">
-        <label>Direccion:</label>
+        <label>Fecha:</label>
         <div class="input-group">
-          <input class="form-control" formControlName="address" type="text" />
+          <input class="form-control" formControlName="date" type="text" />
         </div>
       </div>
       <hr>
       <!--<button type="button" class="btn btn-outline-dark" style="margin-left: 5px;"
         (click)="modal.close('Save click')"><i class="fa fa-fw fa-ban"></i> Cancelar</button>-->
-      <button class="btn btn-lg btn-block btn-dark" [disabled]="hotelForm.invalid" type="submit"><i
+      <button class="btn btn-lg btn-block btn-dark" [disabled]="festivityForm.invalid" type="submit"><i
           class="fa fa-fw fa-floppy-o"></i> Guardar</button>
     </form>
   </div>
@@ -42,10 +42,10 @@
       </button>
   </div>
   <div class="modal-body">
-    <b>ID: </b>{{ view_hotel.id }}<br>
-    <b>NOMBRE: </b>{{ view_hotel.name }}<br>
-    <b>SERVICIOS: </b>{{ view_hotel.services }}<br>
-    <b>DIRECCION: </b>{{ view_hotel.address }}<br>
+    <b>ID: </b>{{ view_festivity.id }}<br>
+    <b>NOMBRE: </b>{{ view_festivity.name }}<br>
+    <b>DESCRIPCION: </b>{{ view_festivity.description }}<br>
+    <b>FECHA: </b>{{ view_festivity.date }}<br>
   </div>
 </ng-template>
 
@@ -57,28 +57,28 @@
   <div class="col col-xl-12 col-lg-12">
 
     <div class="card mb-3">
-      <div class="card-header">Lista de Hoteles</div>
+      <div class="card-header">Lista de Festividades</div>
       <table class="card-body table table-hover">
         <thead>
           <tr>
             <th>NOMBRE</th>
-            <th>SERVICIOS</th>
-            <th>DIRECCION</th>
+            <th>DESCRIPCION</th>
+            <th>FECHA</th>
             <th>ACCIONES</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let hotel of hotels_ar">
-            <td>{{ hotel.name }}</td>
-            <td>{{ hotel.services }}</td>
-            <td>{{ hotel.address }}</td>
+          <tr *ngFor="let festivity of festivities_ar">
+            <td>{{ festivity.name }}</td>
+            <td>{{ festivity.description }}</td>
+            <td>{{ festivity.date }}</td>
             <td>
-              <button (click)="viewHotel(hotel,view)" class="btn btn-info btn-sm" style="margin-left: 5px;">
+              <button (click)="viewFestivity(festivity,view)" class="btn btn-info btn-sm" style="margin-left: 5px;">
                 <i class="fa fa-fw fa-file-text-o"></i>
               </button>
-              <button (click)="editHotel(hotel,content)" class="btn btn-warning btn-sm"
+              <button (click)="editFestivity(festivity,content)" class="btn btn-warning btn-sm"
                 style="margin-left: 5px;"> <i class="fa fa-fw fa-pencil-square-o"></i> </button>
-              <button (click)="deleteHotel(hotel.id)" class="btn btn-danger btn-sm" style="margin-left: 5px;">
+              <button (click)="deleteFestivity(festivity.id)" class="btn btn-danger btn-sm" style="margin-left: 5px;">
                 <i class="fa fa-fw fa-trash"></i> </button>
             </td>
           </tr>

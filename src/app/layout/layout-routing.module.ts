@@ -17,7 +17,8 @@ const routes: Routes = [
             { path: 'components', loadChildren: './bs-component/bs-component.module#BsComponentModule' },
             { path: 'blank-page', loadChildren: './blank-page/blank-page.module#BlankPageModule' },
             { path: 'restaurants', loadChildren: './restaurants/restaurants.module#RestaurantsModule' },
-            { path: 'hotels', loadChildren: './hotels/hotels.module#HotelsModule' }
+            { path: 'hotels', loadChildren: './hotels/hotels.module#HotelsModule' },
+            { path: 'festivities', loadChildren: './festivities/festivities.module#FestivitiesModule' }
         ]
     }
 ];
