@@ -20,9 +20,17 @@
         </div>
       </div>
       <div class="form-group">
-        <label>Fecha:</label>
+        <!--<label>Fecha:</label>
         <div class="input-group">
           <input class="form-control" formControlName="date" type="text" />
+        </div>-->
+        <label>Fecha:</label>
+        <div class="input-group datepicker-input">
+          <input class="form-control" formControlName="date" placeholder="yyyy-mm-dd"
+              name="dp" ngbDatepicker #d="ngbDatepicker">
+          <button class="input-group-addon" (click)="d.toggle()" type="button">
+              <span class="fa fa-calendar"></span>
+          </button>
         </div>
       </div>
       <hr>

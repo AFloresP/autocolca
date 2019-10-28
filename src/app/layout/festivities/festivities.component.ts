@@ -12,6 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class FestivitiesComponent implements OnInit {
 
+  model: any;
   festivities_ar: Festivity[];
   view_festivity: Festivity;
   closeResult: string;

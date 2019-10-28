@@ -1,0 +1,18 @@
+**para compilar luego de clonar el repositorio
+npm install
+
+** para crear un componente
+ng g m layout/empresas --routing true
+ng g c layout/empresas
+
+** para guardar la configuracion de rutas
+npm install
+
+** para crear un servicio
+ng g s services/empresas
+
+** para correr el servidor
+ng serve --o
+
+
+
