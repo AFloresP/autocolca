@@ -1,4 +1,4 @@
-<!--<div [@routerTransition]>
+<div [@routerTransition]>
     <app-page-header [heading]="'Tables'" [icon]="'fa-table'"></app-page-header>
     <div class="row">
         <div class="col col-xl-6 col-lg-12">
@@ -351,68 +351,4 @@
             </div>
         </div>
     </div>
-</div>
--->
-<div class="row">
-    <div class="col col-xl-8 col-lg-8">
-        <div class="card mb-3">
-            <div class="card-header">
-                <h4>Lista de Alumnos</h4>
-            </div>
-            <div class="card-body table-responsive">
-                <table class="table table-sm">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>CODIGO</th>
-                            <th>NOMBRES</th>
-                            <th>APELLIDOS</th>
-                            <th>ID_CUENTA</th>
-                            <th>ACCIONES</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let alumno of alumnos">
-                            <th scope="row">{{ alumno.id_alumno }}</th>
-                            <td>{{ alumno.codigo_alumno }}</td>
-                            <td>{{ alumno.nombres }}</td>
-                            <td>{{ alumno.apellidos }}</td>
-                            <td>{{ alumno.id_cuenta }}</td>
-                            <td>
-                                <!--<button class="btn btn-warning btn-sm" style="margin-left: 5px;">Editar</button> -->
-                                <button (click)="eliminarAlumno(alumno)" class="btn btn-danger btn-sm"
-                                    style="margin-left: 5px;">Eliminar</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-    <div class="col col-xl-4 col-lg-4">
-        <div class="card mb-3">
-            <div class="card-header">
-                <h4>Registrar Alumno</h4>
-            </div>
-            <div class="card-body table-responsive">
-                    <fieldset class="form-group">
-                        <label>Codigo</label>
-                        <input class="form-control" #codigo>
-                    </fieldset>
-
-                    <fieldset class="form-group">
-                        <label>Nombres</label>
-                        <input class="form-control" #nombres>
-                    </fieldset>
-
-                    <fieldset class="form-group">
-                        <label>Apellidos</label>
-                        <input class="form-control" #apellidos>
-                    </fieldset>
-    
-                    <button (click)="guardar(codigo.value, nombres.value, apellidos.value)" class="btn btn-dark">Guardar</button>
-            </div>
-        </div>
-    </div>
-
 </div>

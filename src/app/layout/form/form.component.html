@@ -1,5 +1,4 @@
-<!--
-    <div [@routerTransition]>
+<div [@routerTransition]>
     <app-page-header [heading]="'Forms'" [icon]="'fa-edit'"></app-page-header>
 
     <div class="row">
@@ -226,71 +225,4 @@
 
         </div>
     </div>
-</div>
--->
-<div class="row">
-    <div class="col col-xl-8 col-lg-8">
-        <div class="card mb-3">
-            <div class="card-header">
-                <h4>Lista de Asistencias</h4>
-            </div>
-            <div class="card-body table-responsive">
-                <table class="table table-sm">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>CODIGO ALUMNO</th>
-                            <th>FECHA</th>
-                            <th>VALOR</th>
-                            <th>ACCIONES</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let asistencia of asistencias">
-                            <th scope="row">{{ asistencia.id_asistencia }}</th>
-                            <td>{{ asistencia.codigo_alumno }}</td>
-                            <td>{{ asistencia.fecha }}</td>
-                            <td *ngIf="asistencia.valor ;else other_content"><p class="text-success"> asistio</p></td>
-                            <ng-template #other_content><p class="text-warning">no asistio</p></ng-template>
-                            <td>
-                                
-                                <button (click)="eliminarAsistencia(asistencia)" class="btn btn-danger btn-sm"
-                                    style="margin-left: 5px;">Eliminar</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-    <div class="col col-xl-4 col-lg-4">
-        <div class="card mb-3">
-            <div class="card-header">
-                <h4>Registrar Asistencia</h4>
-            </div>
-            <div class="card-body table-responsive">
-                    <fieldset class="form-group">
-                        <label>Fecha</label>
-                            <div class="form-group">
-                                <div class="input-group datepicker-input">
-                                    <input class="form-control" placeholder="yyyy-mm-dd"
-                                name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker"  #fecha>
-                                        <button class="input-group-addon" (click)="d.toggle()" type="button">
-                                            <!-- <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/> -->
-                                            <span class="fa fa-calendar"></span>
-                                        </button>
-                                </div>
-                            </div>
-                    </fieldset>
-
-                    <fieldset class="form-group">
-                        <label>Codigo de Alumno</label>
-                        <input class="form-control" #codigo>
-                    </fieldset>
-    
-                    <button (click)="guardar(fecha.value, codigo.value)" class="btn btn-dark">Guardar</button>
-            </div>
-        </div>
-    </div>
-
 </div>
