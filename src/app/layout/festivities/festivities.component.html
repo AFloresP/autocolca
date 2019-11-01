@@ -16,7 +16,8 @@
       <div class="form-group">
         <label>Descripcion:</label>
         <div class="input-group">
-          <input class="form-control" formControlName="description" type="text" />
+            <textarea class="form-control rounded-0" formControlName="description" rows="3"></textarea>
+          <!--<input class="form-control" formControlName="description" type="text" />-->
         </div>
       </div>
       <div class="form-group">
@@ -27,7 +28,7 @@
         <label>Fecha:</label>
         <div class="input-group datepicker-input">
           <input class="form-control" formControlName="date" placeholder="yyyy-mm-dd"
-              name="dp" ngbDatepicker #d="ngbDatepicker">
+              name="dp" ngbDatepicker #d="ngbDatepicker" type="text">
           <button class="input-group-addon" (click)="d.toggle()" type="button">
               <span class="fa fa-calendar"></span>
           </button>
@@ -53,7 +54,7 @@
     <b>ID: </b>{{ view_festivity.id }}<br>
     <b>NOMBRE: </b>{{ view_festivity.name }}<br>
     <b>DESCRIPCION: </b>{{ view_festivity.description }}<br>
-    <b>FECHA: </b>{{ view_festivity.date }}<br>
+    <b>FECHA: </b>{{ view_festivity.date.year }}-{{view_festivity.date.month}}-{{view_festivity.date.day}}<br>
   </div>
 </ng-template>
 
@@ -66,7 +67,8 @@
 
     <div class="card mb-3">
       <div class="card-header">Lista de Festividades</div>
-      <table class="card-body table table-hover">
+      <div class="card-body table-responsive">
+      <table class="card-body table">
         <thead>
           <tr>
             <th>NOMBRE</th>
@@ -79,7 +81,7 @@
           <tr *ngFor="let festivity of festivities_ar">
             <td>{{ festivity.name }}</td>
             <td>{{ festivity.description }}</td>
-            <td>{{ festivity.date }}</td>
+            <td>{{ festivity.date.year }}-{{festivity.date.month}}-{{festivity.date.day}}</td>
             <td>
               <button (click)="viewFestivity(festivity,view)" class="btn btn-info btn-sm" style="margin-left: 5px;">
                 <i class="fa fa-fw fa-file-text-o"></i>
@@ -92,6 +94,7 @@
           </tr>
         </tbody>
       </table>
+      </div>
     </div>
 
   </div>

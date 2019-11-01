@@ -4,6 +4,7 @@ import { Festivity } from 'src/app/models/Festivity';
 import { FestivityService } from '../../services/festivity.service'
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-festivities',
@@ -12,7 +13,6 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class FestivitiesComponent implements OnInit {
 
-  model: any;
   festivities_ar: Festivity[];
   view_festivity: Festivity;
   closeResult: string;
@@ -78,6 +78,8 @@ export class FestivitiesComponent implements OnInit {
   saveFestivity(formValues) {
     let data = Object.assign({}, formValues);
     delete data.id;
+    //data.fecha = moment(formValues.fecha).format('YYYY-MM-DD');
+    //console.log(moment(formValues.fecha).format('YYYY-MM-DD'))
     if (formValues.id == null) {
       this.festivityService.createFestivity(data);
       this.toastr.success('Festividad Creada');
