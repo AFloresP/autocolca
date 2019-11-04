@@ -15,6 +15,7 @@ import { firebaseConfig } from "../environments/environment";
 
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { ToastrModule } from 'ngx-toastr';
 
@@ -29,7 +30,8 @@ import { ToastrModule } from 'ngx-toastr';
         LanguageTranslationModule,
         AppRoutingModule,
         AngularFireModule.initializeApp(firebaseConfig),
- 	    AngularFirestoreModule,
+        AngularFirestoreModule,
+        AngularFireStorageModule,
         NgbModule.forRoot()
     ],
     declarations: [AppComponent],

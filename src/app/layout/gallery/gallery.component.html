@@ -1,0 +1,87 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{ modal_title }}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <i class="fa fa-window-close" aria-hidden="true"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="imageForm" (ngSubmit)="saveImage(imageForm.value)">
+        <div class="form-group">
+            <label>Nombre:</label>
+            <div class="input-group">
+              <input class="form-control" formControlName="name" type="text" />
+            </div>
+          </div>
+      
+      <div class="form-group">
+        <label>Fichero:</label>
+        <div class="input-group">
+          <input class="form-control" formControlName="file" type="file" accept=".png, .png" (change)="handleFiles($event)"/>
+        </div>
+      </div>
+      <hr>
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped bg-success" role="progressbar" 
+        [style.width]="(uploadPercent | async) + '%'">
+
+        </div>
+      </div>
+      
+      <hr>
+      <button class="btn btn-lg btn-block btn-dark" [disabled]="imageForm.invalid" type="submit"><i
+          class="fa fa-fw fa-floppy-o"></i> Guardar</button>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #view let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">VISTA DETALLADA</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <i class="fa fa-window-close" aria-hidden="true"></i>
+      </button>
+  </div>
+  <div class="modal-body">
+    <b>ID: </b>{{ view_image.id }}<br>
+    <b>NOMBRE: </b>{{ view_image.name }}<br>
+    <hr>
+    <img [src]="view_image.url" width="100%" height="auto" class="img-fluid"/>
+  </div>
+</ng-template>
+
+<button class="btn btn btn-success" (click)="open(content)"> <i class="fa fa-fw fa-plus-square"></i>Nuevo</button>
+
+<hr>
+
+<div class="row">
+  <div class="col col-xl-12 col-lg-12">
+
+    <div class="card mb-3">
+      <div class="card-header">Galeria de Fotos</div>
+      <table class="card-body table table-hover">
+        <thead>
+          <tr>
+            <th>NOMBRE</th>
+            <th>FOTO</th>
+            <th>ACCIONES</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let image of gallery_ar">
+            <td>{{ image.name }}</td>
+            <td><img [src]="image.url" width="200px" height="auto" class="img-fluid"/></td>
+            <td>
+              <button (click)="viewImage(image,view)" class="btn btn-info btn-sm" style="margin-left: 5px;">
+                <i class="fa fa-fw fa-file-text-o"></i>
+              </button>
+              <button (click)="deleteImage(image)" class="btn btn-danger btn-sm" style="margin-left: 5px;">
+                <i class="fa fa-fw fa-trash"></i> </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>

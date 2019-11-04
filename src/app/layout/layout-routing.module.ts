@@ -7,7 +7,7 @@ const routes: Routes = [
         path: '',
         component: LayoutComponent,
         children: [
-            { path: '', redirectTo: 'dashboard', pathMatch: 'prefix' },
+            { path: '', redirectTo: 'gallery', pathMatch: 'prefix' },
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
             { path: 'charts', loadChildren: './charts/charts.module#ChartsModule' },
             { path: 'tables', loadChildren: './tables/tables.module#TablesModule' },
@@ -18,7 +18,8 @@ const routes: Routes = [
             { path: 'blank-page', loadChildren: './blank-page/blank-page.module#BlankPageModule' },
             { path: 'restaurants', loadChildren: './restaurants/restaurants.module#RestaurantsModule' },
             { path: 'hotels', loadChildren: './hotels/hotels.module#HotelsModule' },
-            { path: 'festivities', loadChildren: './festivities/festivities.module#FestivitiesModule' }
+            { path: 'festivities', loadChildren: './festivities/festivities.module#FestivitiesModule' },
+            { path: 'gallery', loadChildren: './gallery/gallery.module#GalleryModule' }
         ]
     }
 ];

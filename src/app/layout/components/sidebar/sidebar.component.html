@@ -12,6 +12,10 @@
             <i class="fa fa-cutlery"></i>&nbsp;
             <span>{{ 'Blank Page' | translate }}</span>
         </a>-->
+        <a [routerLink]="['/gallery']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-camera-retro"></i>&nbsp;
+            <span>{{ 'Galeria' | translate }}</span>
+        </a>
         <a [routerLink]="['/festivities']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-calendar"></i>&nbsp;
             <span>{{ 'Festividades' | translate }}</span>
